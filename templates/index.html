@@ -1,0 +1,96 @@
+{% extends "casino.html" %}
+
+{% block content %}
+<div id="clientes" class="form-section">
+    <h2 class="mb-4">Registro de Clientes</h2>
+    <form id="clienteForm" onsubmit="submitCliente(event)">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="nombres" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="nombres" required>
+            </div>
+            <div class="col-md-6">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" required>
+            </div>
+            <div class="col-md-4">
+                <label for="dni" class="form-label">Documento Identidad</label>
+                <input type="text" class="form-control" id="dni" required>
+            </div>
+            <div class="col-md-4">
+                <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad" required>
+            </div>
+            <div class="col-md-4">
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                <div class="input-group">
+                    <select class="form-select" id="dia" required>
+                        <option value="" selected>Día</option>
+                        <!-- Días 1-31 -->
+                    </select>
+                    <select class="form-select" id="mes" required>
+                        <option value="" selected>Mes</option>
+                        <!-- Meses 1-12 -->
+                    </select>
+                    <select class="form-select" id="anio" required>
+                        <option value="" selected>Año</option>
+                        <!-- Años 1940-actual -->
+                    </select>
+                </div>
+            </div>
+            <div class="col-9">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="col-md-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" required>
+            </div>
+            <div class="col-12 d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button type="button" class="btn btn-warning" onclick="actualizarCliente()">Actualizar</button>
+                <button type="button" class="btn btn-danger" onclick="eliminarCliente()">Eliminar</button>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Tabla de clientes registrados -->
+    <div class="mt-5">
+        <h3>Clientes Registrados</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Nacionalidad</th>
+                    <th>Fecha Nac.</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody id="clientesTable">
+                <!-- Datos se cargarán dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Secciones ocultas inicialmente -->
+<div id="visitas" class="form-section d-none">
+    <!-- Formulario de visitas -->
+</div>
+
+<div id="promociones" class="form-section d-none">
+    <!-- Formulario de promociones -->
+</div>
+
+<div id="reportes" class="form-section d-none">
+    <!-- Sección de reportes -->
+</div>
+
+<div id="atencion" class="form-section d-none">
+    <!-- Sección de atención al cliente -->
+</div>
+{% endblock %}
